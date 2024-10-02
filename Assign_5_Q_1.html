@@ -1,0 +1,77 @@
+<html>
+<head>
+    <title>Animation</title>
+</head>
+<body>
+
+    <img src="car.png"
+    id="myImage"
+    style="height: 150px; width: 300px; margin-top: 40px; position: absolute;"/><br>
+
+    <div style="height: 20px; width: 800px; background-color: black; position: relative;top: 170px;">
+
+        <br><br><br> Xaxis :<input type="number" style="margin-left: 50px;" id="xaxis" >
+        <br><br> Yaxis :<input type="number" style="margin-left: 50px;"  id="yaxis" >
+        <br><br><br>   <input type="button" style="margin-left: 20px;" value="start" onclick="Start()">
+        <input type="button" value="stop" style="margin-left: 50px;" onclick="Stop()">
+     
+    </div>
+<script>
+    L_margine=0;
+    T_margine=0;
+    var angle=0;
+    var StartInterval;
+
+    function Start()
+    {
+        StartInterval= window.setInterval(StartName,100);
+    }
+
+    function StartName()
+    {
+        L_margine=L_margine+10;
+
+        var reftomyImage=document.getElementById("myImage");
+        if(L_margine<810)
+        {
+            reftomyImage.style.marginLeft=L_margine +"px";
+
+            var reftoxaxis=document.getElementById("xaxis");
+            reftoxaxis.value=L_margine;
+            // var reftoyaxis=document.getElementById("yaxis");
+            // reftoyaxis.value=T_margine;
+        }
+        else
+        {
+            if(T_margine<=500)
+            {
+                T_margine=T_margine+10;
+                reftomyImage.style.marginTop=T_margine +"px";
+
+            angle=angle+11;
+            var refTomyImage=document.getElementById("myImage");
+            refTomyImage.style.rotate=angle +"deg";
+
+            var reftoyaxis=document.getElementById("yaxis");
+            reftoyaxis.value=T_margine;
+            }
+            // else{
+            // var refTomyImage=document.getElementById("myImage")
+            // refTomyImage.src="Acdnt.png"
+            // }
+        }
+
+    }
+function Stop()
+{
+    window.clearInterval(StartInterval);
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>
